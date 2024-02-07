@@ -1,9 +1,7 @@
 package com.example.todolist.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,8 +17,16 @@ public class ProjectManager {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
+    @Column
     private String firstName;
+    @Column
     private String lastName;
+    @Column
     private String role;
+
+
+    @OneToOne
+    @JoinColumn(name = "user_id",referencedColumnName = "id")
+    @JsonIgnore
+    private User user;
 }

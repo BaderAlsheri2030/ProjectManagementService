@@ -22,4 +22,17 @@ public class User {
     private String password;
     private String email;
     private String role;
+
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @PrimaryKeyJoinColumn
+    private TeamLeader teamLeader;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @PrimaryKeyJoinColumn
+    private ProjectManager projectManager;
+
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "user")
+    @PrimaryKeyJoinColumn
+    private Employee employee;
 }

@@ -31,4 +31,9 @@ public class Employee {
         @JoinColumn(columnDefinition = "team_id",referencedColumnName = "id")
         @JsonIgnore
         private Team team;
+
+        @OneToOne
+        @JoinColumn(name = "user_id",referencedColumnName = "id")
+        @JsonIgnore
+        private User user;
 }
