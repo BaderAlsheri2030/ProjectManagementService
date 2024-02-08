@@ -1,5 +1,6 @@
 package com.example.todolist.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,4 +31,9 @@ public class Project {
     private String projectStatus;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "project")
     private Set<Team> teams;
+
+    @ManyToOne
+    @JoinColumn(name = "projectManager_id",referencedColumnName = "id")
+    @JsonIgnore
+    private ProjectManager projectManager;
 }

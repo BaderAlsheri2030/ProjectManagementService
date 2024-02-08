@@ -25,6 +25,10 @@ public class TeamLeader {
     @Column
     private String role;
 
+    @OneToOne
+    @JoinColumn(columnDefinition = "team_id",referencedColumnName = "id")
+    @JsonIgnore
+    private Team team;
 
     @OneToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id")

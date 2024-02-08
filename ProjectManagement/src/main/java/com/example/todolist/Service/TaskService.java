@@ -1,6 +1,6 @@
 package com.example.todolist.Service;
 
-import com.example.todolist.DTO.TaskDto;
+import com.example.todolist.DTO.TaskDTO;
 import com.example.todolist.Model.Task;
 import com.example.todolist.Repository.TaskListRepository;
 import com.example.todolist.Repository.TaskRepository;
@@ -19,7 +19,7 @@ public class TaskService {
         return taskRepository.findTaskById(task_id);
     }
 
-    public void createTask(TaskDto taskDto){
+    public void createTask(TaskDTO taskDto){
         Task task = new Task(null,taskDto.getTaskName(),taskDto.getDescription(),taskDto.getPriority(),taskDto.getStatus(),taskDto.getStartDate(),taskDto.getDueDate(),null,null);
         taskRepository.save(task);
     }
@@ -31,7 +31,7 @@ public class TaskService {
     }
 
     //update task if the role is team leader
-    public void updateTask(UUID task_id,TaskDto taskDto){
+    public void updateTask(UUID task_id, TaskDTO taskDto){
         Task task = taskRepository.findTaskById(task_id);
         task.setDescription(taskDto.getDescription());
         task.setDueDate(taskDto.getDueDate());

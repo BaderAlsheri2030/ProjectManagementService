@@ -19,9 +19,11 @@ public class Employee {
         @Id
         @GeneratedValue(strategy = GenerationType.UUID)
         private UUID id;
-
+        @Column(columnDefinition = "varchar(50) not null")
         private String firstName;
+        @Column(columnDefinition = "varchar(50) not null")
         private String lastName;
+        @Column
         private String role;
 
         @OneToMany(cascade = CascadeType.ALL,mappedBy = "employee")

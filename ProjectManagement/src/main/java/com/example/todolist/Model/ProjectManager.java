@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
 import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +25,8 @@ public class ProjectManager {
     @Column
     private String role;
 
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "projectManager")
+    private Set<Project> projects;
 
     @OneToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id")

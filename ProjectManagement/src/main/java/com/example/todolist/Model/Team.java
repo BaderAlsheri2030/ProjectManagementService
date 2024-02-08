@@ -19,9 +19,7 @@ public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
-
-
+    private String teamName;
 
 
     @ManyToOne
@@ -29,6 +27,9 @@ public class Team {
     @JsonIgnore
     private Project project;
 
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "team")
+    @PrimaryKeyJoinColumn
+    private TeamLeader teamLeader;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "team")
     private Set<TaskList> taskLists;

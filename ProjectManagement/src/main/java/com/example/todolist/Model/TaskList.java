@@ -21,6 +21,7 @@ public class TaskList {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
+
     @ManyToOne
     @JoinColumn(columnDefinition = "team_id",referencedColumnName = "id")
     @JsonIgnore
